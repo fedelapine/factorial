@@ -1,0 +1,104 @@
+import java.util.Scanner;
+/*
+ * Date: 12/01/2015
+ * Created by:
+ * Student Name: Federica La Marca
+ */
+
+public class assessment {
+
+	static Scanner kboard = new Scanner(System.in);  // Global variable called kboard
+
+		public static String getforename()
+		{
+			String forename="";
+			System.out.println("Please enter your forename");
+			forename=kboard.nextLine();
+			return(forename);
+		} //get getforename
+
+		public static String getsurname()
+		{
+			String surname="";
+			System.out.println("Please enter your surname");
+			surname=kboard.nextLine();
+			return(surname);
+		} // end getsurname
+		
+		public static void displaydetails(String forename,String surname)
+		{
+			char initial;
+			forename = forename.toUpperCase();	//converts the string to uppercase
+			initial = forename.charAt(0);		//strips out the first character of the forename
+			surname = surname.toUpperCase(); 	//converts the string to uppercase
+			System.out.println("Your full name is "+initial+surname);
+		} //end displaydetails
+		
+		public static int getNumber()
+		{
+			int nos=0;
+			do
+			{
+			System.out.println("Please enter a number: ");
+			nos = kboard.nextInt();
+			String dummy = kboard.nextLine(); //strips out return
+			if (nos <1 || nos>5)
+				{
+				System.out.println("Number must be between 1 and 5");
+				} 
+			} while (nos<1 || nos>5);
+			return(nos);
+		}
+		
+		public static int calcFactorial(int number)
+		{
+			int factorial=1;
+			for (int counter=1;counter<=number;counter++)
+			{
+			factorial = factorial * counter; 
+			}
+			return(factorial);
+		}
+		
+		public static void display(int number, int factorial)
+		{
+			System.out.println(number+" factorial equals "+factorial);
+		}
+
+		
+public static void main(String[] args)
+		{
+			String forename="";
+			String surname="";
+			String dummy="";
+			int choice=0;
+			int nos=0;
+			int factorial=0;
+			
+			System.out.println("1. display the user name, 2. calculate factorial, 3. exit");
+			choice= kboard.nextInt();
+			dummy = kboard.nextLine();  //strips out the return 
+			
+			do
+				{
+				if (choice == 1)
+					{
+					forename=getforename();
+					surname=getsurname();
+					displaydetails(forename,surname);
+					}
+			
+				if (choice==2)
+					{
+					nos = getNumber();
+					factorial= calcFactorial(nos);
+					display(nos,factorial);
+					} 
+				
+				System.out.println("1. display the user name, 2. calculate factorial, 3. exit");
+				choice= kboard.nextInt();
+				dummy = kboard.nextLine();
+				}	
+				while (choice !=3);
+		} 
+	}
